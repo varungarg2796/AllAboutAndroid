@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.Anas.Gps.MainActivity_screen1"
+    android:background="#393939">
+
+
+    <TextView
+        android:id="@+id/title"
+        android:layout_width="fill_parent"
+        android:text="Walk/Run Tracker"
+        android:gravity="center"
+        android:layout_height="wrap_content"
+        android:textSize="35sp"
+        android:textColor="#F4F4F4"
+        android:paddingBottom="10dp">
+    </TextView>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/btn_stop"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="Stop"
+            android:textColor="#393939"
+            android:background="#ED4E19"
+            android:layout_weight="0.5"
+        />
+
+        <Button
+            android:id="@+id/btn_start"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="Start"
+            android:textColor="#393939"
+            android:layout_alignParentTop="false"
+            android:background="#96ED89"
+            android:layout_weight="0.5"
+            />
+    </LinearLayout>
+    <Button
+        android:id="@+id/btn_reset"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:background="#F4F4F4"
+        android:textColor="#393939"
+        android:layout_below="@+id/chronometerTime"
+        android:text="Reset" />
+
+
+    <TextView
+        android:layout_below="@+id/title"
+        android:id="@+id/userSpeed"
+        android:layout_width="wrap_content"
+        android:text="Current Speed"
+        android:layout_height="wrap_content"
+        android:textSize="22sp"
+        android:textColor="#F4F4F4"
+        android:padding="5dp">
+    </TextView>
+
+    <TextView
+        android:id="@+id/userAvgSpeed"
+        android:layout_width="wrap_content"
+        android:text="Average Speed"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/userSpeed"
+        android:textSize="22sp"
+        android:textColor="#F4F4F4"
+        android:padding="5dp">>
+    </TextView>
+
+    <TextView
+        android:id="@+id/userDistance"
+        android:layout_width="wrap_content"
+        android:text="Distance Traveled"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/userAvgSpeed"
+        android:textSize="22sp"
+        android:textColor="#F4F4F4"
+        android:padding="5dp">>
+    </TextView>
+
+    <Chronometer
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/userDistance"
+        android:id="@+id/chronometerTime"
+        android:textSize="40sp"
+        android:background="#3498DB"
+        android:textColor="#F4F4F4"
+        android:gravity="center"
+        android:layout_marginTop="20dp"
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp"/>
+</RelativeLayout>

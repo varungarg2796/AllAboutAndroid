@@ -77,5 +77,14 @@
         android:layout_alignBottom="@+id/btn_run"
         android:layout_centerHorizontal="true" />
 
+    <TextView
+        android:id="@+id/MsgText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="51dp"
+        android:text="Abc" />
+
 
 </RelativeLayout>

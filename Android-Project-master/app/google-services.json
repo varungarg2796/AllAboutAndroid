@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "315894782051",
+    "firebase_url": "https://ucdandroid-38085.firebaseio.com",
+    "project_id": "ucdandroid-38085",
+    "storage_bucket": "ucdandroid-38085.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:315894782051:android:699c550475dcb3e7",
+        "android_client_info": {
+          "package_name": "com.ucdandroidproject.shivamvarunanas.project"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "315894782051-ga1nu4vvmig39603f4sn2q15c4jn5fdf.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBe8TPWlcUL4xe4GXFa87Y8IrnwbHY96h0"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

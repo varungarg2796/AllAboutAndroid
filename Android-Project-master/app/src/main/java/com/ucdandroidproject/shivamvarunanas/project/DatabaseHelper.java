@@ -62,13 +62,39 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return data;
     }
 
-    public Cursor getItemID(String name){
+    public Cursor getSum(){
         SQLiteDatabase db = this.getWritableDatabase();
-        String query = "SELECT " + COL1 + " FROM " + TABLE_NAME +
-                " WHERE " + COL2 + " = '" + name + "'";
-        Cursor data = db.rawQuery(query, null);
-        return data;
+        Cursor cursor = db.rawQuery("SELECT SUM(" + COL2 + ") as Total FROM " + TABLE_NAME, null);
+        return cursor;
     }
+
+
+    public int getSumValue(){
+        int sum=0;
+        SQLiteDatabase db = this.getWritableDatabase();
+        String sumQuery=String.format("SELECT SUM(%s) as Total FROM %s",COL2,TABLE_NAME);
+        Cursor cursor=db.rawQuery(sumQuery,null);
+        if(cursor.moveToFirst())
+            sum= cursor.getInt(cursor.getColumnIndex("Total"));
+        return sum;
+    }
+
+    public int getTimeSum(){
+        int sum=0;
+        SQLiteDatabase db = this.getWritableDatabase();
+        String sumQuery=String.format("SELECT SUM(%s) as Total FROM %s",COL3,TABLE_NAME);
+        Cursor cursor=db.rawQuery(sumQuery,null);
+        if(cursor.moveToFirst())
+            sum= cursor.getInt(cursor.getColumnIndex("Total"));
+        return sum;
+    }
+//    public Cursor getSumTime(){
+//        SQLiteDatabase db = this.getWritableDatabase();
+//        Cursor cursor = db.rawQuery("SELECT SUM(" + COL3 + ") as Total FROM " + TABLE_NAME, null);
+//        return cursor;
+//    }
+
+
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
     }

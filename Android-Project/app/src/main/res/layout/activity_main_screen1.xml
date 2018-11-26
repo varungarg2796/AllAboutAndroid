@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#393939"
+    tools:context="com.ucdandroidproject.shivamvarunanas.project.MainActivity_Screen1">
+
+
+    <TextView
+        android:id="@+id/title"
+        android:layout_width="384dp"
+        android:layout_height="66dp"
+        android:gravity="center"
+        android:paddingBottom="10dp"
+        android:text="@string/RunTitle"
+        android:textColor="#F4F4F4"
+        android:textSize="35sp"></TextView>
+
+
+    <Button
+        android:id="@+id/btn_stop"
+        android:layout_width="0dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="16dp"
+        android:background="#ED4E19"
+        android:text="@string/RunScreenStopButton"
+        android:textColor="#393939"
+        app:layout_constraintEnd_toEndOf="@+id/btn_start"
+        app:layout_constraintStart_toStartOf="@+id/btn_start"
+        app:layout_constraintTop_toBottomOf="@+id/btn_start" />
+
+
+    <Button
+        android:id="@+id/btn_reset"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
+        android:background="#F4F4F4"
+        android:text="@string/RunScreenResetButton"
+        android:textColor="#393939"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.47"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btn_stop" />
+
+
+    <TextView
+        android:id="@+id/userSpeed"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:padding="5dp"
+        android:text="@string/RunScreenTextCurrentSpeed"
+        android:textColor="#F4F4F4"
+        android:textSize="22sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/title"></TextView>
+
+    <TextView
+        android:id="@+id/userAvgSpeed"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:padding="5dp"
+        android:text="@string/RunScreenAverageSpeedText"
+        android:textColor="#F4F4F4"
+        android:textSize="22sp"
+        app:layout_constraintStart_toStartOf="@+id/userSpeed"
+        app:layout_constraintTop_toBottomOf="@+id/userSpeed"></TextView>
+
+    <TextView
+        android:id="@+id/userDistance"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:padding="5dp"
+        android:text="@string/RunScreenDistance"
+        android:textColor="#F4F4F4"
+        android:textSize="22sp"
+        app:layout_constraintStart_toStartOf="@+id/userAvgSpeed"
+        app:layout_constraintTop_toBottomOf="@+id/userAvgSpeed">></TextView>
+
+    <Chronometer
+        android:id="@+id/chronometerTime"
+        android:layout_width="164dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="8dp"
+        android:background="#3498DB"
+        android:gravity="center"
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp"
+        android:textColor="#F4F4F4"
+        android:textSize="40sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/userDistance" />
+
+    <Button
+        android:id="@+id/btn_start"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="8dp"
+        android:background="#96ED89"
+        android:text="@string/RunScreenStart"
+        android:textColor="#393939"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/chronometerTime" />
+
+</android.support.constraint.ConstraintLayout>
+

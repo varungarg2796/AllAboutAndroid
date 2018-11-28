@@ -43,7 +43,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         contentValues.put(COL2, f1.intValue());
         contentValues.put(COL3, f2.intValue());
 
-        Log.d(TAG, "addData: Adding " + item_1 + " to " + TABLE_NAME);
+        Log.d(TAG, "float value dist " + f1.intValue()+ " to " + TABLE_NAME);
+        Log.d(TAG, "dist value dis " + f2.intValue() + " to " + TABLE_NAME);
 
         long result = db.insert(TABLE_NAME, null, contentValues);
         Log.d(TAG, "see" + result);

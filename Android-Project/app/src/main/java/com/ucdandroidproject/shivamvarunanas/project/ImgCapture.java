@@ -1,8 +1,11 @@
 package com.ucdandroidproject.shivamvarunanas.project;
 
+import android.Manifest;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.provider.MediaStore;
+import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -25,6 +28,7 @@ public class ImgCapture extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
                 startActivityForResult(intent,0);
+                getPermission();
             }
         });
     }
@@ -35,5 +39,14 @@ public class ImgCapture extends AppCompatActivity {
 
         Bitmap bitmap = (Bitmap) data.getExtras().get("data");
         imageView.setImageBitmap(bitmap);
+    }
+
+    public void getPermission() {
+        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED ) {
+            String PERMISSIONS_REQUIRED[] = new String[]{
+                    Manifest.permission.CAMERA,
+            };
+            ActivityCompat.requestPermissions(this, PERMISSIONS_REQUIRED, 1);
+        }
     }
 }

@@ -23,14 +23,15 @@ android:orientation="vertical"
         android:paddingBottom="5dp">
 
     </TextView>
+
     <TextView
         android:id="@+id/userSpeed"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/title"
+        android:padding="5dp"
         android:textColor="#F4F4F4"
-        android:textSize="18dp"
-        android:padding="5dp">
+        android:textSize="18sp">
 
     </TextView>
 
@@ -39,20 +40,18 @@ android:orientation="vertical"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/userSpeed"
+        android:padding="5dp"
         android:textColor="#F4F4F4"
-        android:textSize="18dp"
-        android:padding="5dp">
-    </TextView>
+        android:textSize="18sp"></TextView>
 
     <TextView
         android:id="@+id/userTime"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/userDistance"
+        android:padding="5dp"
         android:textColor="#F4F4F4"
-        android:textSize="18dp"
-        android:padding="5dp">
-    </TextView>
+        android:textSize="18sp"></TextView>
 
 
 

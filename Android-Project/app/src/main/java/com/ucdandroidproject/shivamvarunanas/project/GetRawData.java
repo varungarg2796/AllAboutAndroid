@@ -10,45 +10,46 @@ import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
 
-enum DownloadStatus {WAITING, IN_PROGRESS, NOT_READY, INVALID, SUCCESS}
 
 
+/*Created by Shivam Rathore
+Class which gets raw data from any Uri. This class retrieves the data from flickr API which is passed to Get Data From Flickr_JSON.*/
 
 class GetRawData extends AsyncTask<String, Void, String> {
     private static final String TAG = "GetRawData";
 
     private DownloadStatus status;
-    private final DownloadComplete callBack_RawData;
+    private final DataRetrievalComplete callBack_RawData;
 
-    interface DownloadComplete {
-        void DownloadCompleted(String data, DownloadStatus status);
+    //Interface to implement Callback
+    interface DataRetrievalComplete {
+        void retrievalCompleted(String data, DownloadStatus status);
     }
 
-    public GetRawData(DownloadComplete callback) {
+    public GetRawData(DataRetrievalComplete callback) {
         this.status = DownloadStatus.WAITING;
         callBack_RawData = callback;
     }
 
+    //This is called from Get Data from Flickr Json (In the same thread) and from here we further process in a background thread
     void run_CurrentThread(String s) {
         Log.d(TAG, "run_CurrentThread starts");
 
-//        onPostExecute(doInBackground(s));
+
         if(callBack_RawData != null) {
-//            String result = doInBackground(s);
-//            callBack_RawData.DownloadCompleted(result, status);
-            callBack_RawData.DownloadCompleted(doInBackground(s), status);
+            callBack_RawData.retrievalCompleted(doInBackground(s), status);
         }
 
-        Log.d(TAG, "run_CurrentThread ends");
+
     }
 
     @Override
     protected void onPostExecute(String s) {
-//        Log.d(TAG, "onPostExecute: parameter = " + s);
+
         if(callBack_RawData != null) {
-            callBack_RawData.DownloadCompleted(s, status);
+            callBack_RawData.retrievalCompleted(s, status);
         }
-        Log.d(TAG, "onPostExecute: ends");
+
     }
 
     @Override
@@ -107,3 +108,4 @@ class GetRawData extends AsyncTask<String, Void, String> {
     }
 
 }
+enum DownloadStatus {WAITING, IN_PROGRESS, NOT_READY, INVALID, SUCCESS}

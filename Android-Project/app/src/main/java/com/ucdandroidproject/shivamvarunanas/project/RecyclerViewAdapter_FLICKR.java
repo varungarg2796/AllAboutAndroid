@@ -13,46 +13,55 @@ import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
+/*
+Created by SHIVAM RATHORE
+This is Adapter for Recycler View which returns a new View Holder each time Layout Manager asks for it and returns a single photo
+*/
+
 public class RecyclerViewAdapter_FLICKR extends RecyclerView.Adapter<RecyclerViewAdapter_FLICKR.ViewHolderForFlickrImage> {
     private static final String TAG = "FlickrRecyclerViewAdapt";
-    private List<Photo> photoList;
+    private List<FlickrPhoto> flickrPhotoList;
     private Context content;
 
-    public RecyclerViewAdapter_FLICKR(Context content, List<Photo> photoList) {
-        this.photoList = photoList;
+    public RecyclerViewAdapter_FLICKR(Context content, List<FlickrPhoto> flickrPhotoList) {
+        this.flickrPhotoList = flickrPhotoList;
         this.content = content;
     }
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolderForFlickrImage holder, int position) {
-        Photo photoItem = photoList.get(position);
-        Picasso.get().load(photoItem.getImage()).error(R.drawable.placeholder).placeholder(R.drawable.placeholder).into(holder.smallImage);
-        holder.title.setText(photoItem.getTitle());
+        FlickrPhoto flickrPhotoObject = flickrPhotoList.get(position);
+        Picasso.get().load(flickrPhotoObject.getImage()).error(R.drawable.placeholder).placeholder(R.drawable.placeholder).into(holder.smallImage);
+        holder.title.setText(flickrPhotoObject.getTitle());
 
 
     }
 
     @NonNull
     @Override
+
     public ViewHolderForFlickrImage onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.browse, parent, false
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.photo_list, parent, false
         );
         return new ViewHolderForFlickrImage(view);
     }
 
     @Override
+    // Overriden method tu return the total count of objects(Photos in our case) to be displayed
     public int getItemCount() {
 
-        return ((photoList != null) && (photoList.size() != 0) ? photoList.size() : 0);
+        return ((flickrPhotoList != null) && (flickrPhotoList.size() != 0) ? flickrPhotoList.size() : 0);
     }
 
-    void loadNewData(List<Photo> newPhotos) {
-        photoList = newPhotos;
+    //Simply update the list of flickr Photo and call Data Set Changed Method of the adapter
+    void loadNewData(List<FlickrPhoto> newFlickrPhotos) {
+        flickrPhotoList = newFlickrPhotos;
         notifyDataSetChanged();
     }
 
-    public Photo getPhoto(int position) {
-        return ((photoList != null) && (photoList.size() != 0) ? photoList.get(position) : null);
+    // Return the photo at the given position after checking it's not null or empty
+    public FlickrPhoto getFlickrPhoto(int position) {
+        return ((flickrPhotoList != null) && (flickrPhotoList.size() != 0) ? flickrPhotoList.get(position) : null);
     }
 
     static class ViewHolderForFlickrImage extends RecyclerView.ViewHolder {
@@ -60,11 +69,12 @@ public class RecyclerViewAdapter_FLICKR extends RecyclerView.Adapter<RecyclerVie
         ImageView smallImage = null;
         TextView title = null;
 
-        public ViewHolderForFlickrImage(View itemView) {
-            super(itemView);
+        //Constructor which intialised the thumbhnail and the title of the photo corresponding the received item view
+        public ViewHolderForFlickrImage(View individualHolderView) {
+            super(individualHolderView);
 
-            this.smallImage = itemView.findViewById(R.id.thumbnail);
-            this.title = itemView.findViewById(R.id.title);
+            this.smallImage = individualHolderView.findViewById(R.id.thumbnail);
+            this.title = individualHolderView.findViewById(R.id.title);
 
         }
     }

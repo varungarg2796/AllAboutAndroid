@@ -16,20 +16,20 @@ public class PhotoDetailActivityScreen2 extends TopActivityScreen2 {
         enableBackToHomeToolbar(false);
 
         Intent intent = getIntent();
-        Photo photo = (Photo) intent.getSerializableExtra("PHOTO_TRANSFER");
-        if (photo != null) {
+        FlickrPhoto flickrPhoto = (FlickrPhoto) intent.getSerializableExtra("PHOTO_TRANSFER");
+        if (flickrPhoto != null) {
             TextView photoTitle = findViewById(R.id.photo_title);
-            photoTitle.setText("Title: " + photo.getTitle());
+            photoTitle.setText("Title: " + flickrPhoto.getTitle());
 
             TextView photoTags = findViewById(R.id.photo_tags);
-            photoTags.setText("Tags: " + photo.getTags());
+            photoTags.setText("Tags: " + flickrPhoto.getTags());
 
             TextView photoAuthor = findViewById(R.id.photo_author);
-            photoAuthor.setText(photo.getAuthor());
+            photoAuthor.setText(flickrPhoto.getAuthor());
 
             ImageView photoImage = findViewById(R.id.photo_image);
 
-            Picasso.get().load(photo.getLink()).error(R.drawable.placeholder).placeholder(R.drawable.placeholder).into(photoImage);
+            Picasso.get().load(flickrPhoto.getLink()).error(R.drawable.placeholder).placeholder(R.drawable.placeholder).into(photoImage);
         }
     }
 

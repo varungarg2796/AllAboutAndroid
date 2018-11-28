@@ -3,9 +3,9 @@ package com.ucdandroidproject.shivamvarunanas.project;
 import java.io.Serializable;
 
 /*Created by Shivam Rathore
-* Represents the Photo Object
+* Represents the FlickrPhoto Object
 * */
-class Photo implements Serializable {
+class FlickrPhoto implements Serializable {
 
 
     private String photoTitle;
@@ -15,7 +15,7 @@ class Photo implements Serializable {
     private String photoTags;
     private String photoImage;
 
-    public Photo(String title, String author, String authorId, String link, String tags, String image) {
+    public FlickrPhoto(String title, String author, String authorId, String link, String tags, String image) {
         photoTitle = title;
         photoAuthor = author;
         photoAuthorId = authorId;
@@ -50,7 +50,7 @@ class Photo implements Serializable {
 
     @Override
     public String toString() {
-        return "Photo{" +
+        return "FlickrPhoto{" +
                 "photoTitle='" + photoTitle + '\'' +
                 ", photoAuthor='" + photoAuthor + '\'' +
                 ", photoAuthorId='" + photoAuthorId + '\'' +

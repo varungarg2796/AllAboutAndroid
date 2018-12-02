@@ -1,91 +1,87 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/activity_main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.ucdandroidproject.shivamvarunanas.project.MainActivity_Screen1"
-    android:background="#393939">
+    tools:context="com.ucdandroidproject.shivamvarunanas.project.MainActivity_Screen1">
 
 
-    <LinearLayout
-        android:layout_width="match_parent"
+    <Button
+        android:id="@+id/btn_tracks"
+        style="@style/Widget.AppCompat.Button.Colored"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentStart="true"
-        android:layout_marginBottom="162dp"
-        android:orientation="horizontal">
+        android:layout_marginBottom="32dp"
 
-        <Button
-            android:id="@+id/btn_tracks"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="0.5"
-            android:background="@android:color/holo_blue_dark"
-            android:text="@string/Activity_Main_Tracks"
-            android:textColor="@android:color/white"
+        android:background="@drawable/button_rounded"
+        android:text="TRACKS"
+        android:textStyle="normal|bold"
+        app:layout_constraintBottom_toTopOf="@+id/btn_stat"
+        app:layout_constraintEnd_toEndOf="@+id/btn_run"
+        app:layout_constraintStart_toStartOf="@+id/btn_run"
+        tools:layout_conversion_absoluteHeight="48dp"
+        tools:layout_conversion_absoluteWidth="180dp" />
 
-            android:textStyle="normal|bold" />
-
-        <Button
-            android:id="@+id/btn_stat"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:text="Stats"
-            android:textColor="@android:color/white"
-            android:layout_alignParentTop="false"
-            android:background="@android:color/holo_green_dark"
-            android:layout_weight="0.5"
-            android:textStyle="normal|bold" />
-    </LinearLayout>
+    <Button
+        android:id="@+id/btn_stat"
+        style="@style/Widget.AppCompat.Button.Colored"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="60dp"
+        android:background="@drawable/button_rounded"
+        android:text="STATS"
+        android:textStyle="normal|bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/btn_tracks"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/btn_tracks"
+        tools:layout_conversion_absoluteHeight="48dp"
+        tools:layout_conversion_absoluteWidth="180dp" />
 
     <Button
         android:id="@+id/btn_run"
+        style="@style/Widget.AppCompat.Button.Colored"
         android:layout_width="match_parent"
-        android:background="#F4F4F4"
-        android:textColor="#393939"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginEnd="32dp"
+        android:layout_marginBottom="32dp"
+        android:background="@drawable/button_rounded"
         android:text="RUN NOW"
-        android:layout_centerVertical="true"
-        android:layout_height="wrap_content"
-        android:textStyle="normal|bold" />
+        app:layout_constraintBottom_toTopOf="@+id/btn_tracks"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
-        android:text="V.A.S"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/textView"
-        android:textAppearance="@style/TextAppearance.AppCompat.Large.Inverse"
-        android:textAlignment="center"
-        android:textStyle="normal|bold"
-        android:typeface="sans"
-        android:textSize="36sp"
-        android:layout_marginBottom="33dp"
-        android:layout_above="@+id/textView2"
-        android:layout_centerHorizontal="true" />
-
-    <TextView
-        android:text="Fitness Guro"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
         android:id="@+id/textView2"
-        android:textAppearance="@style/TextAppearance.AppCompat.Large.Inverse"
-        android:textAlignment="center"
-        android:textStyle="normal|bold"
-        android:typeface="sans"
-        android:textSize="36sp"
-        android:layout_marginBottom="103dp"
-        android:layout_alignBottom="@+id/btn_run"
-        android:layout_centerHorizontal="true" />
-
-    <TextView
-        android:id="@+id/MsgText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="51dp"
-        android:text="Abc" />
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="16dp"
+        android:text="Fitness Guru"
+        android:textAlignment="center"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large.Inverse"
+        android:textColor="@color/primary_text"
+        android:textSize="36sp"
+        android:textStyle="normal|bold"
+        android:typeface="sans"
+        app:layout_constraintBottom_toTopOf="@+id/btn_run"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <!--<TextView-->
+    <!--android:id="@+id/MsgText"-->
+    <!--android:layout_width="wrap_content"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:layout_alignParentBottom="true"-->
+    <!--android:layout_centerHorizontal="true"-->
+    <!--android:layout_marginBottom="51dp"-->
+    <!--android:text="Abc" />-->
 
 
-</RelativeLayout>
+</android.support.constraint.ConstraintLayout>

@@ -1,76 +1,73 @@
-<LinearLayout
-xmlns:android="http://schemas.android.com/apk/res/android"
-android:layout_width="match_parent"
-android:layout_height="wrap_content"
-android:orientation="vertical"
-    android:background="#393939"
-
-    >
-<LinearLayout
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical"
+
+
     >
-    <TextView
-        android:id="@+id/title"
-        android:layout_width="wrap_content"
+
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textColor="#F4F4F4"
-        android:textSize="20dp"
-        android:text="Journey Summary"
-        android:layout_gravity="center"
-        android:textStyle="bold"
-        android:paddingBottom="5dp">
+        android:orientation="vertical">
 
-    </TextView>
+        <TextView
+            android:id="@+id/title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
 
-    <TextView
-        android:id="@+id/userSpeed"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/title"
-        android:padding="5dp"
-        android:textColor="#F4F4F4"
-        android:textSize="18sp">
+            android:layout_gravity="center"
+            android:paddingBottom="5dp"
+            android:text="Journey Summary"
+            android:textSize="20dp"
+            android:textStyle="bold">
 
-    </TextView>
+        </TextView>
 
-    <TextView
-        android:id="@+id/userDistance"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/userSpeed"
-        android:padding="5dp"
-        android:textColor="#F4F4F4"
-        android:textSize="18sp"></TextView>
+        <TextView
+            android:id="@+id/userSpeed"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/title"
+            android:padding="5dp"
 
-    <TextView
-        android:id="@+id/userTime"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/userDistance"
-        android:padding="5dp"
-        android:textColor="#F4F4F4"
-        android:textSize="18sp"></TextView>
+            android:textSize="18sp">
+
+        </TextView>
+
+        <TextView
+            android:id="@+id/userDistance"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/userSpeed"
+            android:padding="5dp"
+
+            android:textSize="18sp"></TextView>
+
+        <TextView
+            android:id="@+id/userTime"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/userDistance"
+            android:padding="5dp"
+
+            android:textSize="18sp"></TextView>
 
 
+    </LinearLayout>
 
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:orientation="vertical">
 
+        <com.ucdandroidproject.shivamvarunanas.project.GraphView
+            android:id="@+id/graphLayOut"
+            android:layout_width="wrap_content"
 
-</LinearLayout>
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
 
-<RelativeLayout
-    android:layout_width="fill_parent"
-    android:layout_height="fill_parent"
-    android:orientation="vertical"
-    >
-    <com.ucdandroidproject.shivamvarunanas.project.GraphView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="#393939"
-        android:id="@+id/graphLayOut"
-        android:layout_alignParentBottom="true"
-
-        />
-</RelativeLayout>
+            />
+    </RelativeLayout>
 </LinearLayout>

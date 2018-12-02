@@ -16,66 +16,47 @@ This class parses the retrieved JSON to create a list of photo objects*/
 
 class GetDataFromFlickr_JSON extends AsyncTask<String, Void, List<FlickrPhoto>> implements GetRawData.DataRetrievalComplete {
     private static final String TAG = "GetDataFromFlickr_JSON";
-
-    private List<FlickrPhoto> mFlickrPhotoList = null;
-    private String URL;
-    private String lang;
-    private boolean match;
-
     private final DataAvailableToWork dataAvailableCallback;
+    private List<FlickrPhoto> flickrPhotoList = null;
+    private String URL;
+    private String language;
+    private boolean match;
     private boolean runningOnSameThread = false;
-
-    //Interface to implement callback
-    interface DataAvailableToWork {
-        void onDataAvailable(List<FlickrPhoto> data, DownloadStatus status);
-    }
 
     //Constructor
     public GetDataFromFlickr_JSON(DataAvailableToWork callBack, String baseURL, String language, boolean matchAll) {
         Log.d(TAG, "GetDataFromFlickr_JSON called");
         URL = baseURL;
         dataAvailableCallback = callBack;
-        lang = language;
+        this.language = language;
         match = matchAll;
     }
-
-    //Call the Get Raw Data class to retrieve the JSON in the same thread
-//    void runInSameThread(String searchCriteria) {
-//        Log.d(TAG, "runInSameThread starts");
-//        runningOnSameThread = true;
-//        String destinationUri = createUri(searchCriteria, lang, match);
-//
-//        GetRawData getRawData = new GetRawData(this);
-//        getRawData.execute(destinationUri);
-//        Log.d(TAG, "runInSameThread ends");
-//    }
 
     @Override
     //When the List of photo objects has been created
     protected void onPostExecute(List<FlickrPhoto> flickrPhotos) {
-        Log.d(TAG, "onPostExecute starts");
 
-        if(dataAvailableCallback != null) {
-            dataAvailableCallback.onDataAvailable(mFlickrPhotoList, DownloadStatus.SUCCESS);
+        if (dataAvailableCallback != null) {
+            dataAvailableCallback.onDataAvailable(this.flickrPhotoList, DownloadStatus.SUCCESS);
         }
-        Log.d(TAG, "onPostExecute ends");
     }
+
+
 
     @Override
     ////Call the Get Raw Data class to retrieve the JSON Async Task
     protected List<FlickrPhoto> doInBackground(String... params) {
-        Log.d(TAG, "doInBackground starts");
-        String destinationUri = createUri(params[0], lang, match);
+
+        String UriToExecute = createUri(params[0], language, match);
 
         GetRawData getRawData = new GetRawData(this);
-        getRawData.run_CurrentThread(destinationUri);
-        Log.d(TAG, "doInBackground ends");
-        return mFlickrPhotoList;
+        getRawData.run_CurrentThread(UriToExecute);
+        return flickrPhotoList;
     }
 
-    //Create Uri which is Flickr recognizable from the criterion
+    //Create Uri which is Flickr recognizable from the criterion provided
     private String createUri(String searchCriteria, String lang, boolean matchAll) {
-        Log.d(TAG, "createUri starts");
+
 
         return Uri.parse(URL).buildUpon()
                 .appendQueryParameter("tags", searchCriteria)
@@ -87,19 +68,19 @@ class GetDataFromFlickr_JSON extends AsyncTask<String, Void, List<FlickrPhoto>> 
     }
 
     @Override
-    //Method whic created the array list of photos from retrieved JSON
+    //Method which creates the array list of photos from retrieved JSON
     public void retrievalCompleted(String data, DownloadStatus status) {
-        Log.d(TAG, "retrievalCompleted starts. Status = " + status);
 
-        if(status == DownloadStatus.SUCCESS) {
-            mFlickrPhotoList = new ArrayList<>();
+
+        if (status == DownloadStatus.SUCCESS) {
+            flickrPhotoList = new ArrayList<>();
 
             try {
-                JSONObject jsonData = new JSONObject(data);
-                JSONArray itemsArray = jsonData.getJSONArray("items");
+                JSONObject dataObject = new JSONObject(data);
+                JSONArray dataArray = dataObject.getJSONArray("items");
 
-                for(int i=0; i<itemsArray.length(); i++) {
-                    JSONObject jsonPhoto = itemsArray.getJSONObject(i);
+                for (int i = 0; i < dataArray.length(); i++) {
+                    JSONObject jsonPhoto = dataArray.getJSONObject(i);
                     String title = jsonPhoto.getString("title");
                     String author = jsonPhoto.getString("author");
                     String authorId = jsonPhoto.getString("author_id");
@@ -111,23 +92,28 @@ class GetDataFromFlickr_JSON extends AsyncTask<String, Void, List<FlickrPhoto>> 
                     String link = photoUrl.replaceFirst("_m.", "_b.");
 
                     FlickrPhoto flickrPhotoObject = new FlickrPhoto(title, author, authorId, link, tags, photoUrl);
-                    mFlickrPhotoList.add(flickrPhotoObject);
+                    flickrPhotoList.add(flickrPhotoObject);
 
-                    Log.d(TAG, "retrievalCompleted " + flickrPhotoObject.toString());
+
                 }
-            } catch(JSONException jsone) {
-                jsone.printStackTrace();
-                Log.e(TAG, "retrievalCompleted: Error processing Json data " + jsone.getMessage());
+            } catch (JSONException e) {
+                e.printStackTrace();
+
                 status = DownloadStatus.INVALID;
             }
         }
 
-        if(runningOnSameThread && dataAvailableCallback != null) {
+        if (runningOnSameThread && dataAvailableCallback != null) {
             // now inform the caller that processing is done - possibly returning null if there
             // was an error
-            dataAvailableCallback.onDataAvailable(mFlickrPhotoList, status);
+            dataAvailableCallback.onDataAvailable(flickrPhotoList, status);
         }
 
-        Log.d(TAG, "retrievalCompleted ends");
+
+    }
+
+    //Interface to implement callback
+    interface DataAvailableToWork {
+        void onDataAvailable(List<FlickrPhoto> data, DownloadStatus status);
     }
 }

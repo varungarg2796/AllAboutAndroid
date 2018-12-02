@@ -1,15 +1,12 @@
 package com.ucdandroidproject.shivamvarunanas.project;
 
-import android.Manifest;
 import android.content.Context;
 import android.content.Intent;
-import android.content.pm.PackageManager;
 import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
 import android.net.Uri;
 import android.os.Bundle;
-import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
@@ -20,15 +17,15 @@ import android.widget.Toast;
 import com.google.android.gms.maps.GoogleMap;
 
 import java.util.ArrayList;
-import java.util.Locale;
 
-/*Created by Shivam Rathore
+/*CREATED BY SHIVAM RATHORE
 This class represents the activity corresponding to the Track Details Page
 It gets the current Track as an extra parameter via Intent*/
 
 public class TrackDetails extends AppCompatActivity implements View.OnClickListener, LocationListener {
 
     private static final String TAG = "TrackDetails";
+    private final static int MY_PERMISSIONS_REQUEST_LOCATION = 0;
     Intent intent = null;
     Track track1 = null;
     ImageView photoIcon;
@@ -42,6 +39,7 @@ public class TrackDetails extends AppCompatActivity implements View.OnClickListe
     private double longitude = 0;
 
     @Override
+    //Store the location in the form of latitude and longitude as soon as there's a change in current location
     public void onLocationChanged(Location location) {
         latitude = location.getLatitude();
         longitude = location.getLongitude();
@@ -80,6 +78,8 @@ public class TrackDetails extends AppCompatActivity implements View.OnClickListe
         videoIcon = findViewById(R.id.imageView_Video);
         getLocation();
         setTitle(track1.getTrackName());
+
+
     }
 
 
@@ -87,18 +87,20 @@ public class TrackDetails extends AppCompatActivity implements View.OnClickListe
     //Set the Listeners
     protected void onResume() {
         super.onResume();
+
         photoIcon.setOnClickListener(this);
         videoIcon.setOnClickListener(this);
         textView_stats.setOnClickListener(this);
         textView_run.setOnClickListener(this);
     }
 
+
     @Override
     //Depending on which button is clicked, the corresponding activity is called. Current track/trackID is passed as an extra attribute
     public void onClick(View v) {
         int id = v.getId();
         Intent intent = null;
-
+        boolean mapFlag = false;
 
         Log.d(TAG, "onClick: " + track1.getTrackName());
         switch (id) {
@@ -111,17 +113,27 @@ public class TrackDetails extends AppCompatActivity implements View.OnClickListe
                 break;
 
             case R.id.mapView:
-                String uri = String.format(Locale.ENGLISH, "geo:%s,%s", track1.latitude, track1.longitude);
-                intent = new Intent(Intent.ACTION_VIEW, Uri.parse(uri));
+                //       String uriString = String.format(Locale.ENGLISH, "geo:%s,%s", track1.latitude, track1.longitude);
+                Uri uri = Uri.parse("geo:0,0?q=" + track1.getLatitude() + "," + track1.getLongitude() + "(" + track1.getTrackName() + ")");
+                Log.e(TAG, "onClick: :::" + uri);
+                intent = new Intent(Intent.ACTION_VIEW, uri);
+                intent.setPackage("com.google.android.apps.maps");
+                startActivity(intent);
+                mapFlag = true;
                 break;
             // startActivity(intent1);
             case R.id.textView_run:
                 Log.d(TAG, "onClick: Track !!!!!_____: " + track1.getLatitude() + " , " + track1.getLongitude());
                 Log.d(TAG, "onClick: Current !!!!!_____: " + latitude + " , " + longitude);
-                if (new Double(track1.getLatitude()).intValue() == new Double(latitude).intValue() && new Double(track1.getLongitude()).intValue() == new Double(longitude).intValue()) {
+                if (track1.getLongitude().substring(0, 5).equals((longitude + "").substring(0, 5)) && track1.getLatitude().substring(0, 5).equals((latitude + "").substring(0, 5))) {
                     intent = new Intent(this, MainActivity_Screen1.class);
                     intent.putExtra("TRACK_ID", track1.trackId);
-                } else {
+                }
+//                if (new Double(track1.getLatitude()).floatValue() == new Double(latitude).floatValue() && new Double(track1.getLongitude()).floatValue() == new Double(longitude).floatValue()) {
+//                    intent = new Intent(this, MainActivity_Screen1.class);
+//                    intent.putExtra("TRACK_ID", track1.trackId);
+//                }}
+                else {
                     Toast.makeText(this, "You are not at the track!", Toast.LENGTH_LONG).show();
                 }
 
@@ -144,8 +156,10 @@ public class TrackDetails extends AppCompatActivity implements View.OnClickListe
                 break;
         }
 
-        if (intent != null) {
+        if (intent != null && !mapFlag) {
+            Log.e(TAG, "onClick:::1" + intent);
             intent.putExtra("TRACK", track1);
+            Log.e(TAG, "onClick:::2 " + intent);
             startActivity(intent);
         }
     }

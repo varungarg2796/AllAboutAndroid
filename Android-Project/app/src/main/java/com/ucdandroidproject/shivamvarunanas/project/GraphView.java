@@ -12,6 +12,10 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.LinkedHashMap;
 
+/*CREATED BY ANAS
+    Once the information is sent to this class this class will handle all of the
+    graphing of the data
+*/
 class GraphView extends View {
     Paint paint = new Paint(Paint.ANTI_ALIAS_FLAG);
     LinkedHashMap data = new LinkedHashMap<Integer, Float>();

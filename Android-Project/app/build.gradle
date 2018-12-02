@@ -34,4 +34,7 @@ dependencies {
     implementation 'com.android.support:appcompat-v7:27.1.1'
     implementation 'com.google.firebase:firebase-core:16.0.4'
     implementation 'com.google.firebase:firebase-database:16.0.1'
+
+    implementation 'com.felipecsl:gifimageview:2.1.0'
+    implementation 'commons-io:commons-io:2.4'
 }

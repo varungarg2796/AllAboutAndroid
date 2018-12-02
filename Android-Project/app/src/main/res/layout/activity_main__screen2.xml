@@ -33,26 +33,43 @@
 
     <Button
         android:id="@+id/button_ucd"
-        android:layout_width="wrap_content"
+        style="@style/Widget.AppCompat.Button.Colored"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
         android:layout_marginBottom="8dp"
+        android:background="@drawable/button_rounded"
         android:text="@string/Track_1"
         app:layout_constraintBottom_toBottomOf="@+id/ucd_image"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/ucd_image"
+        app:layout_constraintEnd_toEndOf="@+id/button_Track2"
+        app:layout_constraintStart_toStartOf="@+id/button_Track2"
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/button_Track2"
-        android:layout_width="wrap_content"
+        style="@style/Widget.AppCompat.Button.Colored"
+        android:layout_width="114dp"
         android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:background="@drawable/button_rounded"
         android:text="@string/Track2_Name"
         app:layout_constraintBottom_toBottomOf="@+id/track2_Image"
-        app:layout_constraintEnd_toEndOf="@+id/button_ucd"
-        app:layout_constraintStart_toStartOf="@+id/button_ucd"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/track2_Image"
         app:layout_constraintTop_toTopOf="@+id/track2_Image" />
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp"
+        android:text="More to Follow Soon..."
+        android:textAppearance="@style/TextAppearance.AppCompat.Body2"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/track2_Image" />
 
 </android.support.constraint.ConstraintLayout>

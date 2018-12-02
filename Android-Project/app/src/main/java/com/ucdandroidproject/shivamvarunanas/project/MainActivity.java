@@ -14,6 +14,9 @@ import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.ArrayList;
 
+/*CREATED BY ANAS
+* This is a simple UI with three buttons to let the user navigate through the application
+* three buttons, start, stats and tracks each take you different places*/
 public class MainActivity extends AppCompatActivity {
     private TextView MsgText;
     DatabaseHelper_Firebase fDatabashehelper;

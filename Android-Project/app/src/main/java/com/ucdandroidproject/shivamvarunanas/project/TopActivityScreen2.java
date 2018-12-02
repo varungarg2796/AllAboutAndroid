@@ -4,6 +4,9 @@ import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 
+/*CREATED BY SHIVAM RATHORE
+Define string constants as well as used to enable Action Bar*/
+
 public class TopActivityScreen2 extends AppCompatActivity {
     static final String FLICKR_QUERY = "FLICKR_QUERY";
     static final String PHOTO_TRANSFER = "PHOTO_TRANSFER";

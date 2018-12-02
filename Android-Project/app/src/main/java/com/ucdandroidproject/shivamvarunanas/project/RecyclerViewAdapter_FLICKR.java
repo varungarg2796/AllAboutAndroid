@@ -19,7 +19,7 @@ This is Adapter for Recycler View which returns a new View Holder each time Layo
 */
 
 public class RecyclerViewAdapter_FLICKR extends RecyclerView.Adapter<RecyclerViewAdapter_FLICKR.ViewHolderForFlickrImage> {
-    private static final String TAG = "FlickrRecyclerViewAdapt";
+
     private List<FlickrPhoto> flickrPhotoList;
     private Context content;
 

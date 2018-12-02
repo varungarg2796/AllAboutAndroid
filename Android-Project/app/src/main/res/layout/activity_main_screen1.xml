@@ -7,7 +7,7 @@
     android:id="@+id/activity_main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#393939"
+
     tools:context="com.ucdandroidproject.shivamvarunanas.project.MainActivity_Screen1">
 
 
@@ -18,18 +18,17 @@
         android:gravity="center"
         android:paddingBottom="10dp"
         android:text="@string/RunTitle"
-        android:textColor="#F4F4F4"
         android:textSize="35sp"></TextView>
 
 
     <Button
         android:id="@+id/btn_stop"
+        style="@style/Widget.AppCompat.Button.Colored"
         android:layout_width="0dp"
         android:layout_height="48dp"
         android:layout_marginTop="16dp"
-        android:background="#ED4E19"
+        android:background="@drawable/button_rounded"
         android:text="@string/RunScreenStopButton"
-        android:textColor="#393939"
         app:layout_constraintEnd_toEndOf="@+id/btn_start"
         app:layout_constraintStart_toStartOf="@+id/btn_start"
         app:layout_constraintTop_toBottomOf="@+id/btn_start" />
@@ -37,20 +36,18 @@
 
     <Button
         android:id="@+id/btn_reset"
+        style="@android:style/Widget.Button.Inset"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
+
         android:layout_marginTop="16dp"
-        android:layout_marginEnd="8dp"
         android:layout_marginBottom="8dp"
-        android:background="#F4F4F4"
         android:text="@string/RunScreenResetButton"
-        android:textColor="#393939"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.47"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btn_stop" />
+        app:layout_constraintEnd_toEndOf="@+id/btn_stop"
+        app:layout_constraintStart_toStartOf="@+id/btn_stop"
+        app:layout_constraintTop_toBottomOf="@+id/btn_stop"
+        app:layout_constraintVertical_bias="0.2" />
 
 
     <TextView
@@ -59,9 +56,9 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
+
         android:padding="5dp"
         android:text="@string/RunScreenTextCurrentSpeed"
-        android:textColor="#F4F4F4"
         android:textSize="22sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/title"></TextView>
@@ -73,7 +70,7 @@
         android:layout_marginTop="16dp"
         android:padding="5dp"
         android:text="@string/RunScreenAverageSpeedText"
-        android:textColor="#F4F4F4"
+
         android:textSize="22sp"
         app:layout_constraintStart_toStartOf="@+id/userSpeed"
         app:layout_constraintTop_toBottomOf="@+id/userSpeed"></TextView>
@@ -85,41 +82,45 @@
         android:layout_marginTop="16dp"
         android:padding="5dp"
         android:text="@string/RunScreenDistance"
-        android:textColor="#F4F4F4"
+
         android:textSize="22sp"
         app:layout_constraintStart_toStartOf="@+id/userAvgSpeed"
         app:layout_constraintTop_toBottomOf="@+id/userAvgSpeed">></TextView>
 
     <Chronometer
         android:id="@+id/chronometerTime"
-        android:layout_width="164dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="16dp"
         android:layout_marginEnd="8dp"
-        android:background="#3498DB"
+
         android:gravity="center"
         android:paddingTop="10dp"
         android:paddingBottom="10dp"
-        android:textColor="#F4F4F4"
+
         android:textSize="40sp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.468"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/userDistance" />
 
     <Button
         android:id="@+id/btn_start"
+        style="@style/Widget.AppCompat.Button.Colored"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
+        android:layout_marginStart="32dp"
         android:layout_marginTop="16dp"
-        android:layout_marginEnd="8dp"
-        android:background="#96ED89"
+        android:layout_marginEnd="32dp"
+        android:background="@drawable/button_rounded"
+        android:elevation="@dimen/cardview_default_elevation"
+        android:padding="8dp"
         android:text="@string/RunScreenStart"
-        android:textColor="#393939"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/chronometerTime" />
+        app:layout_constraintTop_toBottomOf="@+id/chronometerTime"
+        app:layout_constraintVertical_bias="0.0" />
 
 </android.support.constraint.ConstraintLayout>
 

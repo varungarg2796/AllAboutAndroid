@@ -12,6 +12,10 @@ import android.widget.TextView;
 import java.util.ArrayList;
 import java.util.List;
 
+/*
+Created by Varun Garg
+Displays the statistics according to the month
+ */
 public class StatsActivity extends AppCompatActivity {
 
     DatabaseHelper mDatabaseHelper;

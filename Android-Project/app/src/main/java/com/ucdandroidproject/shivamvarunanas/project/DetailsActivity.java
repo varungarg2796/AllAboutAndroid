@@ -1,7 +1,7 @@
 package com.ucdandroidproject.shivamvarunanas.project;
 
 
-public class DetailsActivity {
+public class    DetailsActivity {
     double speed, latitude, longitude , distanceTracked;
     long seconds;
 

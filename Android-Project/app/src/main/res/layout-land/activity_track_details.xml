@@ -10,11 +10,11 @@
         android:id="@+id/imageView_Video"
         android:layout_width="96dp"
         android:layout_height="96dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="8dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="16dp"
         android:contentDescription="@string/VideoIcon"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/guideline2"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/youtube_icon" />
@@ -23,11 +23,12 @@
         android:id="@+id/imageView_Photo"
         android:layout_width="96dp"
         android:layout_height="96dp"
-        android:layout_marginTop="32dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="32dp"
         android:contentDescription="@string/ContentDescription_ImageViewIcon"
-        app:layout_constraintEnd_toEndOf="@+id/imageView_Video"
-        app:layout_constraintStart_toStartOf="@+id/imageView_Video"
-        app:layout_constraintTop_toBottomOf="@+id/imageView_Video"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/guideline2"
+        app:layout_constraintTop_toTopOf="@+id/imageView_Video"
         app:srcCompat="@drawable/images_icon" />
 
     <TextView
@@ -38,35 +39,44 @@
         android:text="@string/Stats_Tile"
         android:textSize="25sp"
         android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="@+id/imageView_Photo"
-        app:layout_constraintStart_toStartOf="@+id/imageView_Photo"
+        app:layout_constraintEnd_toEndOf="@+id/imageView_Video"
+        app:layout_constraintStart_toStartOf="@+id/imageView_Video"
         app:layout_constraintTop_toBottomOf="@+id/imageView_Photo" />
 
     <ImageView
         android:id="@+id/mapView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
         android:contentDescription="@string/Content_Description_MapView"
         android:src="@drawable/maps_icon"
-        app:layout_constraintEnd_toEndOf="@+id/textView_stats"
-        app:layout_constraintStart_toStartOf="@+id/textView_stats"
-        app:layout_constraintTop_toBottomOf="@+id/textView_stats" />
+        app:layout_constraintBottom_toBottomOf="@+id/textView_stats"
+        app:layout_constraintEnd_toEndOf="@+id/imageView_Photo"
+        app:layout_constraintStart_toStartOf="@+id/imageView_Photo"
+        app:layout_constraintTop_toTopOf="@+id/textView_stats" />
 
     <TextView
         android:id="@+id/textView_run"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
         android:layout_marginTop="16dp"
+        android:layout_marginEnd="8dp"
         android:layout_marginBottom="24dp"
         android:text="@string/Run_Title"
         android:textSize="36sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@+id/textView_stats"
-        app:layout_constraintStart_toStartOf="@+id/textView_stats"
+        app:layout_constraintEnd_toEndOf="@+id/imageView_Photo"
+        app:layout_constraintStart_toStartOf="@+id/imageView_Video"
         app:layout_constraintTop_toBottomOf="@+id/mapView"
         app:layout_constraintVertical_bias="0.38" />
+
+    <android.support.constraint.Guideline
+        android:id="@+id/guideline2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_begin="296dp" />
 
 
 </android.support.constraint.ConstraintLayout>

@@ -7,6 +7,11 @@ import android.widget.TextView;
 
 import com.squareup.picasso.Picasso;
 
+/*
+CREATED BY SHIVAM RATHORE
+This class is used to represent the activity used display the enlarged Photo
+*/
+
 public class PhotoDetailActivityScreen2 extends TopActivityScreen2 {
 
     @Override

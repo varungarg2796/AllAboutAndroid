@@ -9,7 +9,10 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 
-
+/*
+Created by Varun Garg
+This class handles the functionality of the local storage
+ */
 
 public class DatabaseHelper extends SQLiteOpenHelper {
 
@@ -33,6 +36,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         db.execSQL(createTable);
     }
 
+    //adds data and checks whether the data has been added or not
     public boolean addData(String item_1, String item_2) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
@@ -43,8 +47,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         contentValues.put(COL2, f1.intValue());
         contentValues.put(COL3, f2.intValue());
 
-        Log.d(TAG, "float value dist " + f1.intValue()+ " to " + TABLE_NAME);
-        Log.d(TAG, "dist value dis " + f2.intValue() + " to " + TABLE_NAME);
+        Log.d(TAG, "addData: Adding " + item_1 + " to " + TABLE_NAME);
 
         long result = db.insert(TABLE_NAME, null, contentValues);
         Log.d(TAG, "see" + result);
@@ -56,6 +59,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         }
     }
 
+    //Cursor to get data
     public Cursor getData(){
         SQLiteDatabase db = this.getWritableDatabase();
         String query = "SELECT * FROM " + TABLE_NAME;
@@ -63,13 +67,9 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return data;
     }
 
-    public Cursor getSum(){
-        SQLiteDatabase db = this.getWritableDatabase();
-        Cursor cursor = db.rawQuery("SELECT SUM(" + COL2 + ") as Total FROM " + TABLE_NAME, null);
-        return cursor;
-    }
 
 
+//To get the sum of a column for stats page (sum of distance)
     public int getSumValue(){
         int sum=0;
         SQLiteDatabase db = this.getWritableDatabase();
@@ -79,7 +79,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             sum= cursor.getInt(cursor.getColumnIndex("Total"));
         return sum;
     }
-
+//To get the sum of a column for stats page (sum of time)
     public int getTimeSum(){
         int sum=0;
         SQLiteDatabase db = this.getWritableDatabase();

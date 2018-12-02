@@ -1,6 +1,6 @@
 <resources>
     <string name="app_name">Fitness GURU</string>
-    <string name = "title_track_details">Track_Details</string>
+    <string name="title_track_details">Track_Details</string>
     <string name="title_activity_photo_detail">Photo Detail</string>
     <string name="RunTitle">Run Tracker</string>
     <string name="RunScreenStopButton">STOP</string>
@@ -19,4 +19,10 @@
     <string name="Content_Description_MapView">Map View</string>
     <string name="ContentDescription_ImageViewIcon">Image View Icon</string>
     <string name="Activity_Main_Tracks">Tracks</string>
+    <string name="in_this_month_you_have_travelled">In this month, you have travelled</string>
+    <string name="_0">0</string>
+    <string name="in">In</string>
+
+    <string name="click_a_photo_to_share_stats_with_your_friends">Click a photo to share stats with your friends!</string>
+    <string name="celebrate">Celebrate</string>
 </resources>
